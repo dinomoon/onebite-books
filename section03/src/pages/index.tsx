@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
-import SearchableLayout from '@/components/searchable-layout';
-import style from './index.module.css';
-import BookItem from '@/components/book-item';
-import { InferGetStaticPropsType } from 'next';
-import fetchBooks from '@/lib/fetch-books';
-import fetchRandomBooks from '@/lib/fetch-random-books';
+import { ReactNode } from "react";
+import SearchableLayout from "@/components/searchable-layout";
+import style from "./index.module.css";
+import BookItem from "@/components/book-item";
+import { InferGetStaticPropsType } from "next";
+import fetchBooks from "@/lib/fetch-books";
+import fetchRandomBooks from "@/lib/fetch-random-books";
 
 export const getStaticProps = async () => {
   const [allBooks, recoBooks] = await Promise.all([
@@ -17,6 +17,7 @@ export const getStaticProps = async () => {
       allBooks,
       recoBooks,
     },
+    revalidate: 3,
   };
 };
 
